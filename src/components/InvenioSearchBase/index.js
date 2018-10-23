@@ -1,0 +1,1 @@
+export { InvenioSearchBase } from './InvenioSearchBase';
