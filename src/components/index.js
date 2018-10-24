@@ -1,3 +1,3 @@
-export { Base } from './Base';
-export { Message } from './Base/components/Message';
-export { InvenioSearchBase } from './InvenioSearchBase';
+export { SearchBar } from './SearchBar';
+export { ReactSearchKit } from './ReactSearchKit';
+export { ResultsList } from './ResultsList';

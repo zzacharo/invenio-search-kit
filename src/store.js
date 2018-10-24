@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import { messageReducer } from './components/Base/reducer';
-
-const rootReducer = combineReducers({
-  currentMessage: messageReducer,
-});
+import rootReducer from './state/reducers';
 
 export const storeKey = 'invenio-search-kit';
 
