@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _isEmpty from 'lodash/isEmpty';
 import { List, Segment } from 'semantic-ui-react';
+import { Error } from '../Error';
 
 export default class ResultsList extends Component {
   constructor(props) {
     super(props);
-    this.renderItem = this.props.renderItem || this._renderItem;
-    this.renderItem = this.renderItem.bind(this);
+    this.listItemCmp = this.props.listItemCmp || this.defaultListItem;
+    this.listItemCmp = this.listItemCmp.bind(this);
   }
 
-  _renderItem = rowData => {
+  defaultListItem = rowData => {
     return (
       <Segment>
         <List.Item>{JSON.stringify(rowData)}</List.Item>
@@ -17,23 +19,28 @@ export default class ResultsList extends Component {
     );
   };
 
-  renderData(data) {
+  renderList(data) {
     return data.map(row => {
-      return this.renderItem(row);
+      return this.listItemCmp(row);
     });
   }
 
   render() {
-    const { data } = this.props;
-    return <List>{this.renderData(data)}</List>;
+    const { data, error } = this.props;
+    return _isEmpty(error) ? (
+      <List>{this.renderList(data)}</List>
+    ) : (
+      <Error error={error} />
+    );
   }
 }
 
 ResultsList.propTypes = {
   data: PropTypes.array.isRequired,
-  renderItem: PropTypes.func,
+  listItemCmp: PropTypes.func,
 };
 
 ResultsList.defaultProps = {
   data: [],
+  listItemCmp: undefined,
 };

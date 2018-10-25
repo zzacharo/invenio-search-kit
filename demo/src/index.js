@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Grid } from 'semantic-ui-react';
+import { ReactSearchKit, SearchBar } from '@app/components';
+import { ResultsContainer } from './ResultsContainer';
 
-import { ReactSearchKit, SearchBar, ResultsList } from '../../src/components';
-import { Grid, List, Segment } from 'semantic-ui-react';
 class Demo extends Component {
-  renderItem = row => {
-    return (
-      <Segment>
-        <List.Item>{JSON.stringify(row.metadata.contributors)}</List.Item>
-      </Segment>
-    );
-  };
   render() {
     return (
       <div>
-        <h1>invenio-search-kit Demo</h1>
+        <h1>react-searchkit Demo</h1>
         <ReactSearchKit
-          apiConfig={{
-            url: 'https://videos.cern.ch/api/records',
-          }}
+          apiConfig={{ url: 'https://videos.cern.ch/api/records' }}
         >
           <Grid>
             <Grid.Row>
               <SearchBar />
             </Grid.Row>
             <Grid.Row>
-              <ResultsList renderItem={this.renderItem} />
+              <Grid.Column>FILTERS</Grid.Column>
+              <Grid.Column>
+                <ResultsContainer />
+              </Grid.Column>
             </Grid.Row>
           </Grid>
         </ReactSearchKit>

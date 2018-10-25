@@ -1,7 +1,7 @@
 {
-  "name": "invenio-search-kit",
+  "name": "react-searchkit",
   "version": "1.0.0",
-  "description": "invenio-search-kit React component",
+  "description": "react-searchkit React components",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
